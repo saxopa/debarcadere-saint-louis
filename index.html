@@ -81,7 +81,21 @@ h2{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:-.01em;margin-bottom:.5em}
 .bar nav a:hover{text-decoration:underline}
 .bar .tel{font-weight:600;text-decoration:none;display:inline-flex;gap:.45em;align-items:center;padding:.45em .9em;background:var(--tembe-rouge);white-space:nowrap}
 .bar .tel svg{width:1em;height:1em}
-@media (max-width:900px){.bar nav{display:none}}
+.bar .right{display:flex;align-items:center;gap:8px}
+.burger{display:none;background:none;border:0;color:inherit;cursor:pointer;width:44px;height:44px;position:relative}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:currentColor;transition:transform .2s,opacity .2s}
+.burger span:nth-child(1){top:14px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:28px}
+.bar.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.bar.open .burger span:nth-child(2){opacity:0}
+.bar.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:900px){
+  .burger{display:block}
+  .bar.open{background:var(--wacapou)}
+  .bar nav{display:none;position:fixed;inset:64px 0 auto;flex-direction:column;gap:0;background:var(--wacapou);padding:4px var(--gutter) 20px;box-shadow:0 12px 24px rgba(0,0,0,.25)}
+  .bar.open nav{display:flex}
+  .bar nav a{padding:15px 0;font-family:var(--slab);font-size:1.35rem;font-weight:600;border-bottom:1px solid rgba(238,240,234,.15)}
+  .bar nav a:last-child{border-bottom:0}
+}
 @media (max-width:420px){.bar .tel .num{display:none}}
 
 /* ---- ouverture ---- */
@@ -197,14 +211,17 @@ footer a{color:var(--chaux)}
 
 <header class="bar" id="bar">
   <a class="name" href="#top">Le Débarcadère</a>
-  <nav aria-label="Navigation principale">
+  <nav id="menu" aria-label="Navigation principale">
     <a href="#maison">La maison</a>
     <a href="#chambres">Chambres</a>
     <a href="#petit-dejeuner">Petit-déjeuner</a>
     <a href="#infos">Infos pratiques</a>
     <a href="#contact">Contact</a>
   </nav>
-  <a class="tel" href="tel:+594694411036" aria-label="Appeler le 06 94 41 10 36"><svg aria-hidden="true"><use href="#i-tel"/></svg><span class="num">06 94 41 10 36</span><span class="sr">Appeler</span></a>
+  <div class="right">
+    <a class="tel" href="tel:+594694411036" aria-label="Appeler le 06 94 41 10 36"><svg aria-hidden="true"><use href="#i-tel"/></svg><span class="num">06 94 41 10 36</span><span class="sr">Appeler</span></a>
+    <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
 </header>
 
 <main id="top">
@@ -369,7 +386,12 @@ footer a{color:var(--chaux)}
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
 const bar=document.getElementById('bar');
-const onScroll=()=>bar.classList.toggle('solid',scrollY>innerHeight*.6);onScroll();addEventListener('scroll',onScroll,{passive:true});
+const onScroll=()=>bar.classList.toggle('solid',scrollY>innerHeight*.6);
+const burger=bar.querySelector('.burger');
+const setMenu=o=>{bar.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu')};
+burger.addEventListener('click',()=>setMenu(!bar.classList.contains('open')));
+bar.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&bar.classList.contains('open')){setMenu(false);burger.focus()}});onScroll();addEventListener('scroll',onScroll,{passive:true});
 const imgs=[...document.querySelectorAll('img[data-full]')],lb=document.getElementById('lb'),lbImg=lb.querySelector('img');let i=0,opener=null;
 const show=n=>{i=(n+imgs.length)%imgs.length;lbImg.src=imgs[i].dataset.full;lbImg.alt=imgs[i].alt};
 imgs.forEach((im,n)=>{const t=im.closest('.porte')?im.closest('.porte').querySelector('button'):im.closest('button');t.addEventListener('click',()=>{opener=t;show(n);lb.classList.add('open');lb.querySelector('.lb-close').focus()})});
