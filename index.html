@@ -10,7 +10,7 @@
 <meta property="og:description" content="Chambres d'hôtes au bord du Maroni, à Saint-Laurent-du-Maroni.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="img/terrasse-maroni.webp">
+<meta property="og:image" content="img/ciel-balcon.webp">
 <meta name="theme-color" content="#2B1D16">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,7 +100,7 @@ h2{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:-.01em;margin-bottom:.5em}
 
 /* ---- ouverture ---- */
 .hero{position:relative;min-height:100svh;min-height:100vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 55%}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,29,22,.45) 0,rgba(43,29,22,0) 25%,rgba(43,29,22,.25) 45%,rgba(43,29,22,.9) 100%)}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(40px,8vh,88px)}
 .hero h1{font-size:clamp(3rem,11vw,9.5rem);font-weight:700;line-height:.88;letter-spacing:-.025em;text-shadow:0 2px 24px rgba(43,29,22,.35)}
@@ -141,8 +141,19 @@ section{padding-block:clamp(72px,11vw,144px)}
   .portes::-webkit-scrollbar{display:none}
   .porte{scroll-snap-align:start;aspect-ratio:3/4.4}
 }
+.porte .voir{display:inline-block;margin-top:.8em;font-weight:600;font-size:.92rem;border-bottom:2px solid var(--tembe-jaune);padding-bottom:1px}
+.porte button:focus-visible{outline:3px solid var(--tembe-jaune);outline-offset:-6px}
 .equip{margin-top:48px;display:flex;flex-wrap:wrap;gap:10px}
 .equip li{list-style:none;padding:.4em .85em;border:1px solid var(--pierre);font-size:.95rem;background:var(--chaux)}
+
+/* ---- jardin et ponton ---- */
+.ponton .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(24px,5vw,72px);align-items:center}
+.ponton button{all:unset;cursor:zoom-in;display:block;overflow:hidden}
+.ponton button:focus-visible{outline:3px solid var(--tembe-rouge);outline-offset:3px}
+.ponton-main img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.ponton-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1vw,14px)}
+.ponton-grid img{width:100%;aspect-ratio:4/3;object-fit:cover}
+@media (max-width:820px){.ponton .wrap{grid-template-columns:1fr}.ponton-grid{grid-template-columns:1fr 1fr}.ponton-grid button:first-child{grid-column:1/-1}}
 
 /* ---- petit-déjeuner ---- */
 .pdj{background:var(--maroni);color:var(--chaux)}
@@ -150,6 +161,7 @@ section{padding-block:clamp(72px,11vw,144px)}
 .pdj h2{color:#fff}
 .pdj .prose a{color:var(--tembe-jaune);font-weight:600}
 .formules{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+.pdj-photo{margin-top:28px;width:100%;max-width:360px;aspect-ratio:4/5;object-fit:cover}
 .formule h3{font-size:1.5rem;color:#fff;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:.5em;margin-bottom:.8em;border-bottom:2px solid var(--tembe-jaune)}
 .formule .prix{font-family:var(--sans);font-size:1.15rem;font-weight:600;color:var(--tembe-jaune);white-space:nowrap}
 .formule ul{list-style:none}
@@ -175,12 +187,15 @@ section{padding-block:clamp(72px,11vw,144px)}
 .grille .g1,.grille .g2{grid-column:span 3;grid-row:span 2}
 .grille .g3,.grille .g4,.grille .g5{grid-column:span 2;grid-row:span 2}
 .grille .g6{grid-column:span 4;grid-row:span 2}.grille .g7{grid-column:span 2;grid-row:span 2}
-@media (max-width:700px){.grille{grid-template-columns:1fr 1fr;grid-auto-rows:44vw}.grille button{grid-column:auto!important;grid-row:auto!important}.grille .g1,.grille .g6{grid-column:span 2!important}}
+@media (max-width:700px){.grille{grid-template-columns:1fr 1fr;grid-auto-rows:44vw}.grille button{grid-column:auto!important;grid-row:auto!important}.grille .g1,.grille .g6,.grille .g7{grid-column:span 2!important}}
 
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(20,13,10,.95);display:none;align-items:center;justify-content:center;padding:56px 12px}
 .lightbox.open{display:flex}
 .lightbox img{max-height:100%;max-width:100%;object-fit:contain}
 .lightbox button{position:absolute;background:none;border:0;color:#fff;font-size:2.4rem;cursor:pointer;padding:6px 16px;line-height:1}
+.lightbox figure{display:flex;flex-direction:column;align-items:center;max-height:100%;max-width:100%}
+.lightbox figcaption{color:#fff;font-size:.95rem;margin-top:10px;text-align:center}
+.lightbox figure img{max-height:calc(100vh - 150px)}
 .lb-close{top:6px;right:6px}.lb-prev{left:0;top:50%;transform:translateY(-50%)}.lb-next{right:0;top:50%;transform:translateY(-50%)}
 
 /* ---- contact ---- */
@@ -214,6 +229,7 @@ footer a{color:var(--chaux)}
   <nav id="menu" aria-label="Navigation principale">
     <a href="#maison">La maison</a>
     <a href="#chambres">Chambres</a>
+    <a href="#jardin">Jardin</a>
     <a href="#petit-dejeuner">Petit-déjeuner</a>
     <a href="#infos">Infos pratiques</a>
     <a href="#contact">Contact</a>
@@ -226,7 +242,7 @@ footer a{color:var(--chaux)}
 
 <main id="top">
 <section class="hero" aria-labelledby="titre">
-  <img src="img/allee-fleuve.webp" alt="" width="1350" height="1800" fetchpriority="high">
+  <img src="img/ciel-balcon.webp" alt="" width="1800" height="1012" fetchpriority="high">
   <div class="wrap">
     <h1 id="titre"><span>Le Débarcadère</span> <span>de Saint‑Louis</span></h1>
     <p>Trois chambres d'hôtes de grand confort au bord du Maroni, à quelques minutes du centre de Saint-Laurent.</p>
@@ -246,8 +262,8 @@ footer a{color:var(--chaux)}
       <p>Au programme : le calme, la vue sur le fleuve, et un accueil attentionné du matin au soir.</p>
     </div>
     <figure>
-      <img src="img/terrasse-maroni.webp" alt="Terrasse de pierre et jardin tropical, avec le fleuve Maroni en arrière-plan" width="960" height="960" loading="lazy">
-      <figcaption>La terrasse, côté fleuve.</figcaption>
+      <img src="img/table-vue-fleuve.webp" alt="Table en bois devant une baie ouverte sur le balcon et le fleuve Maroni" width="1600" height="1205" loading="lazy">
+      <figcaption>Le Maroni, vu depuis la table.</figcaption>
     </figure>
   </div>
 </section>
@@ -256,28 +272,46 @@ footer a{color:var(--chaux)}
   <div class="wrap">
     <div class="intro">
       <h2>Trois chambres,<br>trois cultures</h2>
-      <p>Chacune a son caractère. Toutes ont le même confort : Wi-Fi, frigo, micro-ondes, cafetière, et le ménage fait chaque jour.</p>
+      <p>Chaque chambre est un petit appartement : un lit double, un séjour avec coin repas, une kitchenette et un balcon face au fleuve.</p>
     </div>
     <div class="portes">
       <article class="porte">
-        <img src="img/chambre-tembe-sm.webp" data-full="img/chambre-tembe.webp" alt="Chambre Tembé : lit double sous une grande peinture tembé aux couleurs vives" width="600" height="800" loading="lazy">
-        <button type="button" aria-label="Agrandir la photo de la chambre Tembé"></button>
-        <div class="txt"><h3>Tembé</h3><p>L'art tembé des Bushinengués, ses couleurs vives et ses entrelacs, au-dessus du lit.</p></div>
+        <img src="img/tembe-lit-sm.webp" alt="" width="600" height="800" loading="lazy">
+        <button type="button" data-set="tembe" aria-label="Voir les photos de la chambre Tembé"></button>
+        <div class="txt"><h3>Tembé</h3><p>Une grande peinture tembé au-dessus du lit, un fauteuil sculpté et un mur de pierre d'origine côté cuisine.</p><span class="voir">Voir les 5 photos</span></div>
       </article>
       <article class="porte">
-        <img src="img/chambre-creole-sm.webp" data-full="img/chambre-creole.webp" alt="Chambre Créole : lit double, tête de lit en bois sombre et fenêtre sur le jardin" width="600" height="800" loading="lazy">
-        <button type="button" aria-label="Agrandir la photo de la chambre Créole"></button>
-        <div class="txt"><h3>Créole</h3><p>Bois sombre, tons doux et lumière du jardin : l'esprit de la case créole.</p></div>
+        <img src="img/creole-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
+        <button type="button" data-set="creole" aria-label="Voir les photos de la chambre Créole"></button>
+        <div class="txt"><h3>Créole</h3><p>Lumineuse et spacieuse, avec un salon, une grande table en bois et un balcon meublé.</p><span class="voir">Voir les 5 photos</span></div>
       </article>
       <article class="porte">
-        <img src="img/chambre-ciel-de-case-sm.webp" data-full="img/chambre-ciel-de-case.webp" alt="Chambre Ciel de Case : lit contre un mur de pierres apparentes, sous un ciel de case peint" width="600" height="800" loading="lazy">
-        <button type="button" aria-label="Agrandir la photo de la chambre Ciel de Case"></button>
-        <div class="txt"><h3>Ciel de Case</h3><p>Un mur de pierre d'origine et un ciel de case peint à la tête du lit.</p></div>
+        <img src="img/ciel-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
+        <button type="button" data-set="ciel" aria-label="Voir les photos de la chambre Ciel de Case"></button>
+        <div class="txt"><h3>Ciel de Case</h3><p>Mur de pierre, douche à l'italienne et le balcon le plus ouvert sur le fleuve.</p><span class="voir">Voir les 5 photos</span></div>
       </article>
     </div>
     <ul class="equip" aria-label="Équipements des chambres">
-      <li>Wi-Fi gratuit</li><li>Télévision</li><li>Mini-réfrigérateur</li><li>Micro-ondes</li><li>Cafetière et bouilloire</li><li>Ménage quotidien</li><li>Maison non-fumeur</li>
+      <li>Balcon sur le Maroni</li><li>Kitchenette</li><li>Coin repas</li><li>Climatisation</li><li>Wi-Fi gratuit</li><li>Télévision</li><li>Ménage quotidien</li><li>Maison non-fumeur</li>
     </ul>
+  </div>
+</section>
+
+<section class="ponton" id="jardin">
+  <div class="wrap">
+    <figure class="ponton-main">
+      <button type="button" data-set="jardin" data-i="0" aria-label="Agrandir : le ponton au coucher du soleil"><img src="img/ponton-couchant.webp" alt="Ponton en bois s'avançant sur le Maroni au coucher du soleil, avec un kiosque au bout" width="960" height="540" loading="lazy"></button>
+    </figure>
+    <div class="prose">
+      <h2>Le jardin et le ponton</h2>
+      <p>Au bout du jardin, un ponton s'avance sur le Maroni jusqu'à un kiosque. C'est la meilleure place pour le coucher du soleil.</p>
+      <p>Autour, des palmiers, des tables en pierre à l'ombre d'un grand arbre et une terrasse fleurie.</p>
+    </div>
+    <div class="ponton-grid">
+      <button type="button" data-set="jardin" data-i="1"><img src="img/jardin-tables-sm.webp" alt="Tables et bancs en pierre sous un grand arbre, face au ponton" loading="lazy"></button>
+      <button type="button" data-set="jardin" data-i="2"><img src="img/jardin-palmiers-sm.webp" alt="Palmiers et plantes tropicales au bord du fleuve" loading="lazy"></button>
+      <button type="button" data-set="jardin" data-i="3"><img src="img/jardin-terrasse-sm.webp" alt="Terrasse fleurie et jardin au lever du jour, face au Maroni" loading="lazy"></button>
+    </div>
   </div>
 </section>
 
@@ -288,6 +322,7 @@ footer a{color:var(--chaux)}
       <p>Servi de 7 h à 9 h, dedans ou en terrasse selon la météo. En chambre, sur demande.</p>
       <p>Préparé par Patkreole.</p>
       <p><a href="docs/petit-dejeuner.pdf" target="_blank" rel="noopener">Voir la carte en PDF</a></p>
+      <img class="pdj-photo" src="img/petit-dejeuner-fleuve-sm.webp" alt="Petit-déjeuner servi face au fleuve : jus d'orange, papaye, viennoiseries" width="600" height="797" loading="lazy">
     </div>
     <div class="formules">
       <div class="formule">
@@ -330,13 +365,13 @@ footer a{color:var(--chaux)}
 
 <section class="galerie" aria-label="Galerie photo">
   <div class="wrap grille">
-    <button type="button" class="g1"><img src="img/balcon-maroni-sm.webp" data-full="img/balcon-maroni.webp" alt="Balcon en bois avec fauteuils face au Maroni" loading="lazy"></button>
-    <button type="button" class="g2"><img src="img/facade-sm.webp" data-full="img/facade.webp" alt="Façade de la maison, bois et pierre" loading="lazy"></button>
-    <button type="button" class="g3"><img src="img/tableau-chef-sm.webp" data-full="img/tableau-chef.webp" alt="Tableau d'un chef amérindien en coiffe de plumes" loading="lazy"></button>
-    <button type="button" class="g4"><img src="img/salon-bois-sm.webp" data-full="img/salon-bois.webp" alt="Table et banc en bois massif sculpté" loading="lazy"></button>
-    <button type="button" class="g5"><img src="img/tableau-faucon-sm.webp" data-full="img/tableau-faucon.webp" alt="Tableau d'un faucon" loading="lazy"></button>
-    <button type="button" class="g6"><img src="img/terrasse-maroni-sm.webp" data-full="img/terrasse-maroni.webp" alt="Terrasse et jardin, vue sur le fleuve" loading="lazy"></button>
-    <button type="button" class="g7"><img src="img/bureau-sm.webp" data-full="img/bureau.webp" alt="Bureau en bois avec lampe et orchidée" loading="lazy"></button>
+    <button type="button" class="g1" data-set="galerie" data-i="0"><img src="img/vue-balcon-pirogues-sm.webp" alt="Le Maroni et les pirogues vus d'un balcon" loading="lazy"></button>
+    <button type="button" class="g2" data-set="galerie" data-i="1"><img src="img/maison-terrasse-sm.webp" alt="Entrée d'une chambre sur la terrasse dallée, le fleuve en fond" loading="lazy"></button>
+    <button type="button" class="g3" data-set="galerie" data-i="2"><img src="img/tableau-chef-sm.webp" alt="Tableau d'un chef amérindien en coiffe de plumes" loading="lazy"></button>
+    <button type="button" class="g4" data-set="galerie" data-i="3"><img src="img/balcon-maroni-sm.webp" alt="Fauteuils sur un balcon en bois face au Maroni" loading="lazy"></button>
+    <button type="button" class="g5" data-set="galerie" data-i="4"><img src="img/tableau-faucon-sm.webp" alt="Tableau d'un faucon" loading="lazy"></button>
+    <button type="button" class="g6" data-set="galerie" data-i="5"><img src="img/facade-sm.webp" alt="Façade de la maison, bois et pierre" loading="lazy"></button>
+    <button type="button" class="g7" data-set="galerie" data-i="6"><img src="img/allee-fleuve-sm.webp" alt="Allée bordée de palmiers menant au fleuve" loading="lazy"></button>
   </div>
 </section>
 
@@ -379,7 +414,7 @@ footer a{color:var(--chaux)}
 <div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Photo agrandie">
   <button class="lb-close" aria-label="Fermer">×</button>
   <button class="lb-prev" aria-label="Photo précédente">‹</button>
-  <img alt="">
+  <figure><img alt=""><figcaption></figcaption></figure>
   <button class="lb-next" aria-label="Photo suivante">›</button>
 </div>
 
@@ -392,12 +427,20 @@ const setMenu=o=>{bar.classList.toggle('open',o);burger.setAttribute('aria-expan
 burger.addEventListener('click',()=>setMenu(!bar.classList.contains('open')));
 bar.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&bar.classList.contains('open')){setMenu(false);burger.focus()}});onScroll();addEventListener('scroll',onScroll,{passive:true});
-const imgs=[...document.querySelectorAll('img[data-full]')],lb=document.getElementById('lb'),lbImg=lb.querySelector('img');let i=0,opener=null;
-const show=n=>{i=(n+imgs.length)%imgs.length;lbImg.src=imgs[i].dataset.full;lbImg.alt=imgs[i].alt};
-imgs.forEach((im,n)=>{const t=im.closest('.porte')?im.closest('.porte').querySelector('button'):im.closest('button');t.addEventListener('click',()=>{opener=t;show(n);lb.classList.add('open');lb.querySelector('.lb-close').focus()})});
+const room=(k,n)=>[[k+'-lit',n+' : le lit'],[k+'-sejour',n+' : le séjour'],[k+'-balcon',n+' : le balcon']];
+const sets={
+  tembe:[...room('tembe','Chambre Tembé'),['tembe-cuisine','Chambre Tembé : la kitchenette et le mur de pierre'],['tembe-fauteuil','Chambre Tembé : le fauteuil sculpté']],
+  creole:[...room('creole','Chambre Créole'),['creole-salon','Chambre Créole : le salon'],['creole-cuisine','Chambre Créole : la kitchenette']],
+  ciel:[...room('ciel','Chambre Ciel de Case'),['ciel-douche',"Chambre Ciel de Case : la douche à l'italienne"],['ciel-cuisine','Chambre Ciel de Case : la kitchenette']]
+};
+const fromDom=k=>[...document.querySelectorAll(`[data-set="${k}"] img`)].map(im=>[im.getAttribute('src').replace(/^img\/|(-sm)?\.webp$/g,''),im.alt]);
+sets.jardin=fromDom('jardin');sets.galerie=fromDom('galerie');
+const lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),lbCap=lb.querySelector('figcaption');let cur=[],i=0,opener=null;
+const show=n=>{i=(n+cur.length)%cur.length;const[f,alt]=cur[i];lbImg.src='img/'+f+'.webp';lbImg.alt=alt;lbCap.textContent=alt+'  ·  '+(i+1)+' / '+cur.length};
+document.querySelectorAll('[data-set]').forEach(b=>b.addEventListener('click',()=>{opener=b;cur=sets[b.dataset.set];show(+(b.dataset.i||0));lb.classList.add('open');lb.querySelector('.lb-close').focus()}));
 const close=()=>{lb.classList.remove('open');opener&&opener.focus()};
 lb.querySelector('.lb-close').onclick=close;lb.querySelector('.lb-prev').onclick=()=>show(i-1);lb.querySelector('.lb-next').onclick=()=>show(i+1);
-lb.addEventListener('click',e=>{if(e.target===lb)close()});
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='FIGURE')close()});
 addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});
 </script>
 </body>
