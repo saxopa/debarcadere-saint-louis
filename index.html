@@ -191,7 +191,9 @@ section{padding-block:clamp(72px,11vw,144px)}
 .formule .prix{font-family:var(--sans);font-size:1.15rem;font-weight:600;color:var(--tembe-jaune);white-space:nowrap}
 .formule ul{list-style:none}
 .formule li{padding:.28em 0}
-.formule .choix{font-style:italic;opacity:.85}
+.formule .prix small{font-size:.8rem;font-weight:400;opacity:.85}
+.formule .total{margin-top:1.2em;padding-top:.9em;border-top:1px solid rgba(238,240,234,.3)}
+.formule .total strong{display:block;margin-top:.2em;color:#fff;font-family:var(--slab);font-size:1.25rem}
 @media (max-width:900px){.pdj .wrap,.formules{grid-template-columns:1fr}}
 
 /* ---- infos pratiques ---- */
@@ -363,34 +365,29 @@ footer a{color:var(--chaux)}
 <section class="pdj" id="petit-dejeuner">
   <div class="wrap">
     <div class="prose">
-      <h2>Le petit-déjeuner</h2>
+      <h2>Le petit‑déjeuner</h2>
       <p>Servi de 7 h à 9 h, dedans ou en terrasse selon la météo. En chambre, sur demande.</p>
-      <p>Préparé par Patkreole.</p>
-      <p><a href="docs/petit-dejeuner.pdf" target="_blank" rel="noopener">Voir la carte en PDF</a></p>
+      <p><a href="docs/petit-dejeuner.pdf" target="_blank" rel="noopener">Télécharger la carte (PDF)</a></p>
       <img class="pdj-photo" src="img/petit-dejeuner-fleuve-sm.webp" alt="Petit-déjeuner servi face au fleuve : jus d'orange, papaye, viennoiseries" width="600" height="797" loading="lazy">
     </div>
     <div class="formules">
       <div class="formule">
-        <h3>Le classique <span class="prix">12 €</span></h3>
+        <h3>La formule <span class="prix">15 € <small>par personne</small></span></h3>
         <ul>
-          <li>Thé, café, lait ou chocolat</li>
-          <li>Jus de fruit, eau</li>
-          <li>Pain, beurre, fromage, confiture</li>
+          <li>Café, thé ou chocolat créole</li>
+          <li>Jus de fruits frais</li>
+          <li>Fruit de saison</li>
+          <li>Assortiment de pains et viennoiseries</li>
+          <li>Assortiment de fromages et confitures</li>
         </ul>
       </div>
       <div class="formule">
-        <h3>Les suggestions <span class="prix">18 €</span></h3>
+        <h3>Option gourmande <span class="prix">+ 5 €</span></h3>
         <ul>
-          <li class="choix">Deux choix parmi :</li>
-          <li>Yaourt vanille fait maison</li>
-          <li>Fruits de saison</li>
-          <li>Œufs en omelette, au plat ou brouillés</li>
-          <li>Viennoiseries</li>
-          <li>Pain au beurre et chocolat créole</li>
-          <li>Pain au beurre à la saucisse</li>
-          <li>Beurre de hareng saur ou de morue</li>
-          <li>Queue de porc et légumes pays, selon le marché</li>
+          <li>Œuf</li>
+          <li>Yaourt maison</li>
         </ul>
+        <p class="total">Formule avec l'option gourmande : <strong>20 € par personne</strong></p>
       </div>
     </div>
   </div>
