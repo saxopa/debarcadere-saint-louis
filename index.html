@@ -12,9 +12,10 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:image" content="img/ciel-balcon.webp">
 <meta name="theme-color" content="#2B1D16">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;1,400&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/ZillaSlab-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,6 +35,10 @@
   "checkinTime": "16:00",
   "checkoutTime": "12:00",
   "numberOfRooms": 3,
+  "priceRange": "130 € – 150 € la nuit",
+  "logo": "img/logo.webp",
+  "image": "img/ciel-balcon.webp",
+  "amenityFeature": [{"@type":"LocationFeatureSpecification","name":"Chambre accessible PMR","value":true}],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61559716842222",
     "https://www.instagram.com/debarcaderesl/"
@@ -75,7 +80,8 @@ h2{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:-.01em;margin-bottom:.5em}
 /* ---- barre du haut ---- */
 .bar{position:fixed;inset:0 0 auto;z-index:40;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-inline:var(--gutter);color:#fff;transition:background .25s}
 .bar.solid{background:var(--wacapou)}
-.bar .name{font-family:var(--slab);font-weight:700;font-size:1.2rem;text-decoration:none;white-space:nowrap}
+.bar .name{font-family:var(--slab);font-weight:700;font-size:1.2rem;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:10px}
+.bar .name img{width:40px;height:40px;border-radius:50%}
 .bar nav{display:flex;gap:24px;font-size:.95rem}
 .bar nav a{text-decoration:none}
 .bar nav a:hover{text-decoration:underline}
@@ -96,7 +102,7 @@ h2{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:-.01em;margin-bottom:.5em}
   .bar nav a{padding:15px 0;font-family:var(--slab);font-size:1.35rem;font-weight:600;border-bottom:1px solid rgba(238,240,234,.15)}
   .bar nav a:last-child{border-bottom:0}
 }
-@media (max-width:420px){.bar .tel .num{display:none}}
+@media (max-width:400px){.bar .name{font-size:1.05rem}.bar .name img{width:34px;height:34px}}
 
 /* ---- ouverture ---- */
 .hero{position:relative;min-height:100svh;min-height:100vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
@@ -143,6 +149,23 @@ section{padding-block:clamp(72px,11vw,144px)}
 }
 .porte .voir{display:inline-block;margin-top:.8em;font-weight:600;font-size:.92rem;border-bottom:2px solid var(--tembe-jaune);padding-bottom:1px}
 .porte button:focus-visible{outline:3px solid var(--tembe-jaune);outline-offset:-6px}
+.porte .niveau{font-size:.85rem;font-weight:600;color:var(--tembe-jaune);margin:0 0 .2em}
+.porte .prix-ch{margin-top:.6em;font-size:1rem}
+.porte .prix-ch strong{font-family:var(--slab);font-size:1.5rem;font-weight:700}
+.porte .liens{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;margin-top:.6em}
+.porte .voir{margin-top:0}
+.porte .resa{pointer-events:auto;position:relative;z-index:2;font-weight:600;font-size:.92rem;color:#fff;background:var(--tembe-rouge);padding:.45em .8em;text-decoration:none}
+.porte .resa:hover{background:#86201A}
+.tarifs{margin-top:64px;max-width:860px}
+.tarifs h3{font-size:clamp(1.8rem,3.5vw,2.4rem);margin-bottom:.5em}
+.table-wrap{overflow-x:auto}
+.tarifs table{width:100%;border-collapse:collapse;border-top:2px solid var(--wacapou);min-width:460px}
+.tarifs th,.tarifs td{text-align:left;padding:14px 16px 14px 0;border-bottom:1px solid var(--pierre);vertical-align:top}
+.tarifs thead th{font-size:.9rem;font-weight:600;color:var(--wacapou-2)}
+.tarifs tbody th{font-family:var(--slab);font-size:1.3rem;font-weight:600}
+.tarifs tbody th span{display:block;font-family:var(--sans);font-size:.88rem;font-weight:400;color:var(--wacapou-2)}
+.tarifs td{font-family:var(--slab);font-size:1.3rem;font-weight:700;white-space:nowrap}
+.tarifs .note{margin-top:16px;color:var(--wacapou-2);max-width:40em}
 .equip{margin-top:48px;display:flex;flex-wrap:wrap;gap:10px}
 .equip li{list-style:none;padding:.4em .85em;border:1px solid var(--pierre);font-size:.95rem;background:var(--chaux)}
 
@@ -202,7 +225,9 @@ section{padding-block:clamp(72px,11vw,144px)}
 .contact{background:var(--wacapou);color:var(--chaux)}
 .contact .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(40px,6vw,96px);align-items:start}
 .contact h2{color:#fff}
-.contact .big{display:inline-block;font-family:var(--slab);font-weight:700;font-size:clamp(2.4rem,7vw,5.6rem);line-height:1;letter-spacing:-.02em;color:#fff;text-decoration:none;margin:.25em 0 .35em;border-bottom:4px solid var(--tembe-rouge)}
+.btn-wa{font-size:1.1rem;margin:.6em 0 .2em}
+.contact .autres{margin-top:1.6em}
+.contact .big{display:inline-block;font-family:var(--slab);font-weight:700;font-size:clamp(2rem,5vw,3.4rem);line-height:1;letter-spacing:-.02em;color:#fff;text-decoration:none;margin:.25em 0 .35em;border-bottom:4px solid var(--tembe-rouge)}
 .contact .big:hover{border-color:var(--tembe-jaune)}
 .contact .mail{font-size:clamp(1.05rem,2vw,1.3rem);font-weight:600;word-break:break-all}
 .contact aside{display:grid;gap:32px;font-size:1rem}
@@ -213,7 +238,9 @@ section{padding-block:clamp(72px,11vw,144px)}
 @media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
 
 footer{background:var(--wacapou);color:rgba(238,240,234,.7);border-top:1px solid rgba(238,240,234,.15);padding:28px 0;font-size:.92rem}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 32px}
+footer .foot-id{display:flex;align-items:center;gap:14px}
+footer .foot-id img{width:64px;height:64px;border-radius:50%}
 footer ul{display:flex;gap:24px;list-style:none}
 footer a{color:var(--chaux)}
 </style>
@@ -222,10 +249,11 @@ footer a{color:var(--chaux)}
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.2-1.2-.2-.2-.5-.3z"/></symbol>
 </svg>
 
 <header class="bar" id="bar">
-  <a class="name" href="#top">Le Débarcadère</a>
+  <a class="name" href="#top"><img src="img/logo.webp" alt="" width="40" height="40">Le Débarcadère</a>
   <nav id="menu" aria-label="Navigation principale">
     <a href="#maison">La maison</a>
     <a href="#chambres">Chambres</a>
@@ -235,7 +263,7 @@ footer a{color:var(--chaux)}
     <a href="#contact">Contact</a>
   </nav>
   <div class="right">
-    <a class="tel" href="tel:+594694411036" aria-label="Appeler le 06 94 41 10 36"><svg aria-hidden="true"><use href="#i-tel"/></svg><span class="num">06 94 41 10 36</span><span class="sr">Appeler</span></a>
+    <a class="tel" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0AChambre%20%3A%20%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener" aria-label="Réserver sur WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="num">WhatsApp</span></a>
     <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -247,8 +275,8 @@ footer a{color:var(--chaux)}
     <h1 id="titre"><span>Le Débarcadère</span> <span>de Saint‑Louis</span></h1>
     <p>Trois chambres d'hôtes de grand confort au bord du Maroni, à quelques minutes du centre de Saint-Laurent.</p>
     <div class="actions">
-      <a class="btn btn-rouge" href="tel:+594694411036"><svg aria-hidden="true"><use href="#i-tel"/></svg>Réserver au 06 94 41 10 36</a>
-      <a href="#chambres">Voir les chambres</a>
+      <a class="btn btn-rouge" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0AChambre%20%3A%20%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Réserver sur WhatsApp</a>
+      <a href="#chambres">Voir les chambres et les tarifs</a>
     </div>
   </div>
 </section>
@@ -278,22 +306,37 @@ footer a{color:var(--chaux)}
       <article class="porte">
         <img src="img/tembe-lit-sm.webp" alt="" width="600" height="800" loading="lazy">
         <button type="button" data-set="tembe" aria-label="Voir les photos de la chambre Tembé"></button>
-        <div class="txt"><h3>Tembé</h3><p>Une grande peinture tembé au-dessus du lit, un fauteuil sculpté et un mur de pierre d'origine côté cuisine.</p><span class="voir">Voir les 5 photos</span></div>
+        <div class="txt"><p class="niveau">Rez-de-chaussée, accessible PMR</p><h3>Tembé</h3><p>Une grande peinture tembé au-dessus du lit, un fauteuil sculpté et un mur de pierre d'origine côté cuisine.</p><p class="prix-ch"><strong>130 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20la%20chambre%20Temb%C3%A9%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener">Réserver cette chambre</a></div></div>
       </article>
       <article class="porte">
         <img src="img/creole-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
         <button type="button" data-set="creole" aria-label="Voir les photos de la chambre Créole"></button>
-        <div class="txt"><h3>Créole</h3><p>Lumineuse et spacieuse, avec un salon, une grande table en bois et un balcon meublé.</p><span class="voir">Voir les 5 photos</span></div>
+        <div class="txt"><p class="niveau">À l'étage, jusqu'à 4 personnes</p><h3>Créole</h3><p>Lumineuse et spacieuse, avec un salon, une grande table en bois et un balcon meublé.</p><p class="prix-ch"><strong>150 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20la%20chambre%20Cr%C3%A9ole%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener">Réserver cette chambre</a></div></div>
       </article>
       <article class="porte">
         <img src="img/ciel-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
         <button type="button" data-set="ciel" aria-label="Voir les photos de la chambre Ciel de Case"></button>
-        <div class="txt"><h3>Ciel de Case</h3><p>Mur de pierre, douche à l'italienne et le balcon le plus ouvert sur le fleuve.</p><span class="voir">Voir les 5 photos</span></div>
+        <div class="txt"><p class="niveau">En duplex</p><h3>Ciel de Case</h3><p>Mur de pierre, douche à l'italienne et le balcon le plus ouvert sur le fleuve.</p><p class="prix-ch"><strong>130 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20la%20chambre%20Ciel%20de%20Case%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener">Réserver cette chambre</a></div></div>
       </article>
     </div>
     <ul class="equip" aria-label="Équipements des chambres">
       <li>Balcon sur le Maroni</li><li>Kitchenette</li><li>Coin repas</li><li>Climatisation</li><li>Wi-Fi gratuit</li><li>Télévision</li><li>Ménage quotidien</li><li>Maison non-fumeur</li>
     </ul>
+    <div class="tarifs" id="tarifs">
+      <h3>Tarifs</h3>
+      <div class="table-wrap">
+      <table>
+        <caption class="sr">Tarifs par nuit, pour deux personnes</caption>
+        <thead><tr><th scope="col">Chambre</th><th scope="col">La nuit, 2 personnes</th><th scope="col">À partir de 3 nuits</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Tembé <span>rez-de-chaussée, accessible PMR</span></th><td>130 €</td><td>120 €</td></tr>
+          <tr><th scope="row">Créole <span>à l'étage, jusqu'à 4 personnes</span></th><td>150 €</td><td>130 €</td></tr>
+          <tr><th scope="row">Ciel de Case <span>en duplex</span></th><td>130 €</td><td>120 €</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Chambre Créole : jusqu'à 4 personnes, 2 dans le lit double et 2 dans le canapé-lit. 50 € par personne supplémentaire. Petit-déjeuner en option, voir ci-dessous.</p>
+    </div>
   </div>
 </section>
 
@@ -357,7 +400,7 @@ footer a{color:var(--chaux)}
     <dl>
       <div><dt>Arrivée</dt><dd>De 16 h à 19 h. Plus tôt ou plus tard : prévenez-nous avant.</dd></div>
       <div><dt>Départ</dt><dd>Avant midi, le dernier jour.</dd></div>
-      <div><dt>Accès PMR</dt><dd>Appelez-nous pour connaître les conditions d'accès.</dd></div>
+      <div><dt>Accès PMR</dt><dd>La chambre Tembé, en rez-de-chaussée, est accessible aux personnes à mobilité réduite.</dd></div>
       <div><dt>Règlement</dt><dd><a href="docs/reglement-interieur.pdf" target="_blank" rel="noopener">Lire le règlement intérieur (PDF)</a></dd></div>
     </dl>
   </div>
@@ -379,9 +422,11 @@ footer a{color:var(--chaux)}
   <div class="wrap">
     <div>
       <h2>Réserver</h2>
-      <p>Le plus simple : un appel. On vous répond sur les disponibilités et les tarifs.</p>
+      <p>Le plus simple : WhatsApp. Le message est déjà écrit, il ne reste qu'à compléter vos dates et le nombre de personnes.</p>
+      <a class="btn btn-rouge btn-wa" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0AChambre%20%3A%20%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Écrire sur WhatsApp</a>
+      <p class="autres">Vous pouvez aussi appeler le</p>
       <a class="big" href="tel:+594694411036">06 94 41 10 36</a>
-      <p>Ou par e-mail : <a class="mail" href="mailto:debarcadere@saintlouis97320.com?subject=Demande%20de%20r%C3%A9servation">debarcadere@saintlouis97320.com</a></p>
+      <p>ou écrire à <a class="mail" href="mailto:debarcadere@saintlouis97320.com?subject=Demande%20de%20r%C3%A9servation">debarcadere@saintlouis97320.com</a></p>
     </div>
     <aside>
       <div>
@@ -391,9 +436,8 @@ footer a{color:var(--chaux)}
       <div>
         <h3>Joignable</h3>
         <table>
-          <tr><td>Lundi au vendredi</td><td>8 h – 20 h</td></tr>
-          <tr><td>Samedi</td><td>9 h – 19 h</td></tr>
-          <tr><td>Dimanche</td><td>9 h – 21 h</td></tr>
+          <tr><td>Lundi au vendredi</td><td>8 h – 21 h</td></tr>
+          <tr><td>Samedi et dimanche</td><td>9 h – 19 h</td></tr>
         </table>
       </div>
     </aside>
@@ -403,10 +447,11 @@ footer a{color:var(--chaux)}
 
 <footer>
   <div class="wrap">
-    <p>© <span id="y">2026</span> Le Débarcadère de Saint-Louis</p>
+    <p class="foot-id"><img src="img/logo.webp" alt="Logo du Débarcadère de Saint-Louis" width="64" height="64" loading="lazy"><span>© <span id="y">2026</span> Le Débarcadère de Saint-Louis</span></p>
     <ul>
       <li><a href="https://www.facebook.com/profile.php?id=61559716842222" target="_blank" rel="noopener">Facebook</a></li>
       <li><a href="https://www.instagram.com/debarcaderesl/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
     </ul>
   </div>
 </footer>
