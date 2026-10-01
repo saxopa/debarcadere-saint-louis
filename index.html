@@ -475,7 +475,10 @@ footer a{color:var(--chaux)}
           <label>Personnes<select name="personnes"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
           <label>Petit-déjeuner<select name="pdj"><option value="non">Sans</option><option value="formule">Formule, 15 €</option><option value="gourmande">Gourmand, 20 €</option></select></label>
         </div>
-        <label>Nom et prénom<input type="text" name="prenom" autocomplete="name" required></label>
+        <div class="f-row">
+          <label>Nom et prénom<input type="text" name="prenom" autocomplete="name" required></label>
+          <label>E-mail<input type="email" name="email" autocomplete="email" inputmode="email" required></label>
+        </div>
         <label><span>Un mot à ajouter ? <span class="opt">(facultatif)</span></span><textarea name="message" rows="2"></textarea></label>
         <div class="estim" id="estim" aria-live="polite" hidden></div>
         <p class="f-err" id="f-err" role="alert"></p>
@@ -592,6 +595,7 @@ function valider(){
   else if(!el('depart').value){m='Indiquez votre date de départ.';first=bad('depart')}
   else if(nuits<1){m="Le départ doit être après l'arrivée.";first=bad('depart')}
   else if(!el('prenom').value.trim()){m='Indiquez votre nom et prénom.';first=bad('prenom')}
+  else if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(el('email').value.trim())){m='Indiquez une adresse e-mail valide.';first=bad('email')}
   err.textContent=m;if(first)first.focus();return!m;
 }
 function texte(){
@@ -601,7 +605,7 @@ function texte(){
     `${c.nuits} nuit${c.nuits>1?'s':''}, ${c.pers} personne${c.pers>1?'s':''}, ${PDJ[c.pdj][1]}`,
     `Estimation du site : ${eur(c.total)}`,
     ...(el('message').value.trim()?['',el('message').value.trim()]:[]),
-    '',`${el('prenom').value.trim()}`].join('\n');
+    '',`${el('prenom').value.trim()}`,`E-mail : ${el('email').value.trim()}`].join('\n');
 }
 f.addEventListener('change',()=>{syncPers();calc();if(err.textContent)valider()});
 f.addEventListener('input',e=>{if(e.target.type==='date')calc()});
