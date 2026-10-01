@@ -11,7 +11,11 @@
 <meta property="og:description" content="Chambres d'hôtes au bord du Maroni, à Saint-Laurent-du-Maroni.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="https://www.ledebarcaderedesaintlouis97320.com/img/ciel-balcon.webp">
+<meta property="og:image" content="https://www.ledebarcaderedesaintlouis97320.com/img/og-debarcadere.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Balcon d'une chambre face au fleuve Maroni">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2B1D16">
 <link rel="preload" href="fonts/ZillaSlab-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
@@ -231,7 +235,37 @@ section{padding-block:clamp(72px,11vw,144px)}
 .contact .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(40px,6vw,96px);align-items:start}
 .contact h2{color:#fff}
 .btn-wa{font-size:1.1rem;margin:.6em 0 .2em}
-.contact .autres{margin-top:1.6em}
+.contact .autres{margin-top:2em;color:rgba(238,240,234,.85)}
+.contact .autres a{font-weight:600;color:#fff}
+.contact .autres .mail{font-size:inherit;word-break:normal;overflow-wrap:anywhere}
+.resa-form{margin-top:1.6em;display:grid;gap:16px;max-width:620px}
+.resa-form label{display:grid;gap:6px;font-size:.92rem;font-weight:600;color:#fff}
+.resa-form .opt{font-weight:400;opacity:.7}
+.resa-form input:not([type=radio]),.resa-form select,.resa-form textarea{font:inherit;font-weight:400;font-size:1rem;color:var(--wacapou);background:var(--chaux);border:2px solid var(--chaux);border-radius:0;padding:.65em .75em;width:100%;min-height:48px}
+.resa-form textarea{resize:vertical;min-height:0}
+.resa-form :is(input,select,textarea):focus-visible{outline:3px solid var(--tembe-jaune);outline-offset:1px}
+.resa-form [aria-invalid=true]{border-color:#E8735F}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f-chambres{border:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.f-chambres legend{font-size:.92rem;font-weight:600;color:#fff;margin-bottom:6px}
+.f-chambres label{position:relative;cursor:pointer}
+.f-chambres input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.f-chambres span{display:block;padding:.7em .8em;border:2px solid rgba(238,240,234,.35);font-weight:400;font-size:.85rem;line-height:1.35;color:rgba(238,240,234,.85)}
+.f-chambres b{display:block;font-family:var(--slab);font-size:1.15rem;font-weight:600;color:#fff}
+.f-chambres input:checked+span{border-color:var(--tembe-jaune);background:rgba(227,174,27,.12)}
+.f-chambres input:focus-visible+span{outline:3px solid var(--tembe-jaune);outline-offset:2px}
+.estim{border-left:4px solid var(--tembe-jaune);background:rgba(238,240,234,.07);padding:14px 16px;font-size:.95rem}
+.estim ul{list-style:none;display:grid;gap:3px}
+.estim li{display:flex;justify-content:space-between;gap:16px}
+.estim .tot{margin-top:8px;padding-top:8px;border-top:1px solid rgba(238,240,234,.25);font-weight:600;color:#fff}
+.estim .tot span:last-child{font-family:var(--slab);font-size:1.4rem}
+.estim small{display:block;margin-top:8px;opacity:.75}
+.f-err{color:#F3A08F;font-weight:600;min-height:0}
+.f-err:empty{display:none}
+.f-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.f-actions .btn{font-size:1.05rem;cursor:pointer}
+.f-mail{background:none;border:0;color:#fff;font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:.2em;cursor:pointer;padding:.5em 0}
+@media (max-width:560px){.f-chambres{grid-template-columns:1fr}.f-row{grid-template-columns:1fr}}
 .contact .big{display:inline-block;font-family:var(--slab);font-weight:700;font-size:clamp(2rem,5vw,3.4rem);line-height:1;letter-spacing:-.02em;color:#fff;text-decoration:none;margin:.25em 0 .35em;border-bottom:4px solid var(--tembe-rouge)}
 .contact .big:hover{border-color:var(--tembe-jaune)}
 .contact .mail{font-size:clamp(1.05rem,2vw,1.3rem);font-weight:600;word-break:break-all}
@@ -280,7 +314,7 @@ footer a{color:var(--chaux)}
     <h1 id="titre"><span>Le Débarcadère</span> <span>de Saint‑Louis</span></h1>
     <p>Trois chambres d'hôtes de grand confort au bord du Maroni, à quelques minutes du centre de Saint-Laurent.</p>
     <div class="actions">
-      <a class="btn btn-rouge" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0AChambre%20%3A%20%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Réserver sur WhatsApp</a>
+      <a class="btn btn-rouge" href="#contact">Réserver un séjour</a>
       <a href="#chambres">Voir les chambres et les tarifs</a>
     </div>
   </div>
@@ -311,17 +345,17 @@ footer a{color:var(--chaux)}
       <article class="porte">
         <img src="img/tembe-lit-sm.webp" alt="" width="600" height="800" loading="lazy">
         <button type="button" data-set="tembe" aria-label="Voir les photos de la chambre Tembé"></button>
-        <div class="txt"><p class="niveau">Rez-de-chaussée, accessible PMR</p><h3>Tembé</h3><p>Une grande peinture tembé au-dessus du lit, un fauteuil sculpté et un mur de pierre d'origine côté cuisine.</p><p class="prix-ch"><strong>130 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20la%20chambre%20Temb%C3%A9%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener">Réserver cette chambre</a></div></div>
+        <div class="txt"><p class="niveau">Rez-de-chaussée, accessible PMR</p><h3>Tembé</h3><p>Une grande peinture tembé au-dessus du lit, un fauteuil sculpté et un mur de pierre d'origine côté cuisine.</p><p class="prix-ch"><strong>130 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="tembe">Réserver cette chambre</a></div></div>
       </article>
       <article class="porte">
         <img src="img/creole-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
         <button type="button" data-set="creole" aria-label="Voir les photos de la chambre Créole"></button>
-        <div class="txt"><p class="niveau">À l'étage, jusqu'à 4 personnes</p><h3>Créole</h3><p>Lumineuse et spacieuse, avec un salon, une grande table en bois et un balcon meublé.</p><p class="prix-ch"><strong>150 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20la%20chambre%20Cr%C3%A9ole%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener">Réserver cette chambre</a></div></div>
+        <div class="txt"><p class="niveau">À l'étage, jusqu'à 4 personnes</p><h3>Créole</h3><p>Lumineuse et spacieuse, avec un salon, une grande table en bois et un balcon meublé.</p><p class="prix-ch"><strong>150 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="creole">Réserver cette chambre</a></div></div>
       </article>
       <article class="porte">
         <img src="img/ciel-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
         <button type="button" data-set="ciel" aria-label="Voir les photos de la chambre Ciel de Case"></button>
-        <div class="txt"><p class="niveau">En duplex</p><h3>Ciel de Case</h3><p>Mur de pierre, douche à l'italienne et le balcon le plus ouvert sur le fleuve.</p><p class="prix-ch"><strong>130 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20la%20chambre%20Ciel%20de%20Case%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener">Réserver cette chambre</a></div></div>
+        <div class="txt"><p class="niveau">En duplex</p><h3>Ciel de Case</h3><p>Mur de pierre, douche à l'italienne et le balcon le plus ouvert sur le fleuve.</p><p class="prix-ch"><strong>130 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="ciel">Réserver cette chambre</a></div></div>
       </article>
     </div>
     <ul class="equip" aria-label="Équipements des chambres">
@@ -423,11 +457,32 @@ footer a{color:var(--chaux)}
   <div class="wrap">
     <div>
       <h2>Réserver</h2>
-      <p>Le plus simple : WhatsApp. Le message est déjà écrit, il ne reste qu'à compléter vos dates et le nombre de personnes.</p>
-      <a class="btn btn-rouge btn-wa" href="https://wa.me/594694411036?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20au%20D%C3%A9barcad%C3%A8re%20de%20Saint-Louis.%0AChambre%20%3A%20%0ADates%20%3A%20du%20%E2%80%A6%20au%20%E2%80%A6%0ANombre%20de%20personnes%20%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Écrire sur WhatsApp</a>
-      <p class="autres">Vous pouvez aussi appeler le</p>
-      <a class="big" href="tel:+594694411036">06 94 41 10 36</a>
-      <p>ou écrire à <a class="mail" href="mailto:debarcadere@saintlouis97320.com?subject=Demande%20de%20r%C3%A9servation">debarcadere@saintlouis97320.com</a></p>
+      <p>Indiquez votre séjour : on vous répond sur WhatsApp avec les disponibilités.</p>
+      <form id="resa" class="resa-form" novalidate>
+        <fieldset class="f-chambres">
+          <legend>Chambre</legend>
+          <label><input type="radio" name="chambre" value="tembe"><span><b>Tembé</b>2 personnes, 130 €</span></label>
+          <label><input type="radio" name="chambre" value="creole"><span><b>Créole</b>jusqu&apos;à 4, 150 €</span></label>
+          <label><input type="radio" name="chambre" value="ciel"><span><b>Ciel de Case</b>2 personnes, 130 €</span></label>
+        </fieldset>
+        <div class="f-row">
+          <label>Arrivée<input type="date" name="arrivee" required></label>
+          <label>Départ<input type="date" name="depart" required></label>
+        </div>
+        <div class="f-row">
+          <label>Personnes<select name="personnes"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
+          <label>Petit-déjeuner<select name="pdj"><option value="non">Sans</option><option value="formule">Formule, 15 €</option><option value="gourmande">Gourmand, 20 €</option></select></label>
+        </div>
+        <label>Votre prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+        <label><span>Un mot à ajouter ? <span class="opt">(facultatif)</span></span><textarea name="message" rows="2"></textarea></label>
+        <div class="estim" id="estim" aria-live="polite" hidden></div>
+        <p class="f-err" id="f-err" role="alert"></p>
+        <div class="f-actions">
+          <button type="submit" class="btn btn-rouge"><svg aria-hidden="true"><use href="#i-wa"/></svg>Envoyer sur WhatsApp</button>
+          <button type="button" class="f-mail" id="f-mail">Envoyer par e-mail</button>
+        </div>
+      </form>
+      <p class="autres">Vous pouvez aussi appeler le <a class="tel-inline" href="tel:+594694411036">06 94 41 10 36</a> ou écrire à <a class="mail" href="mailto:debarcadere@saintlouis97320.com?subject=Demande%20de%20r%C3%A9servation">debarcadere@saintlouis97320.com</a>.</p>
     </div>
     <aside>
       <div>
@@ -488,6 +543,74 @@ const close=()=>{lb.classList.remove('open');opener&&opener.focus()};
 lb.querySelector('.lb-close').onclick=close;lb.querySelector('.lb-prev').onclick=()=>show(i-1);lb.querySelector('.lb-next').onclick=()=>show(i+1);
 lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='FIGURE')close()});
 addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});
+
+(()=>{
+const TEL='594694411036',MAIL='debarcadere@saintlouis97320.com';
+const ROOMS={tembe:{n:'Tembé',p:130,p3:120,max:2},creole:{n:'Créole',p:150,p3:130,max:4},ciel:{n:'Ciel de Case',p:130,p3:120,max:2}};
+const SUPP=50; // par personne au-delà de 2, par nuit (chambre Créole)
+const PDJ={non:[0,'sans petit-déjeuner'],formule:[15,'petit-déjeuner formule (15 €)'],gourmande:[20,'petit-déjeuner gourmand (20 €)']};
+const f=document.getElementById('resa'),est=document.getElementById('estim'),err=document.getElementById('f-err');
+const el=n=>f.elements[n];
+const iso=d=>d.toISOString().slice(0,10);
+const today=new Date();today.setHours(12,0,0,0);
+el('arrivee').min=iso(today);
+const parse=v=>{if(!v)return null;const[y,m,d]=v.split('-').map(Number);return Date.UTC(y,m-1,d)};
+const fmt=v=>{const[y,m,d]=v.split('-').map(Number);return new Date(y,m-1,d).toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long',year:'numeric'})};
+const eur=n=>n.toLocaleString('fr-FR')+' €';
+function state(){
+  const r=ROOMS[(f.querySelector('[name=chambre]:checked')||{}).value];
+  const a=parse(el('arrivee').value),d=parse(el('depart').value);
+  const nuits=a&&d?Math.round((d-a)/864e5):0;
+  return{r,nuits,pers:+el('personnes').value,pdj:el('pdj').value};
+}
+function syncPers(){
+  const r=ROOMS[(f.querySelector('[name=chambre]:checked')||{}).value];const max=r?r.max:4;
+  [...el('personnes').options].forEach(o=>{o.disabled=+o.value>max});
+  if(+el('personnes').value>max)el('personnes').value=String(max);
+}
+function calc(){
+  const{r,nuits,pers,pdj}=state();
+  if(el('arrivee').value){const a=parse(el('arrivee').value);el('depart').min=iso(new Date(a+864e5))}
+  if(!r||nuits<1){est.hidden=true;return null}
+  const tarif=nuits>=3?r.p3:r.p,chambre=tarif*nuits,supp=Math.max(0,pers-2)*SUPP*nuits,pd=PDJ[pdj][0]*pers*nuits,total=chambre+supp+pd;
+  let h=`<ul><li><span>Chambre ${r.n} : ${nuits} nuit${nuits>1?'s':''} × ${tarif} €</span><span>${eur(chambre)}</span></li>`;
+  if(supp)h+=`<li><span>${pers-2} personne${pers>3?'s':''} en plus × ${SUPP} € × ${nuits} nuit${nuits>1?'s':''}</span><span>${eur(supp)}</span></li>`;
+  if(pd)h+=`<li><span>Petit-déjeuner : ${pers} × ${PDJ[pdj][0]} € × ${nuits} matin${nuits>1?'s':''}</span><span>${eur(pd)}</span></li>`;
+  h+=`<li class="tot"><span>Estimation</span><span>${eur(total)}</span></li></ul><small>${nuits>=3?'Tarif à partir de 3 nuits appliqué. ':''}Prix indicatif : nous vous confirmons la disponibilité et le montant exact.</small>`;
+  est.innerHTML=h;est.hidden=false;return{r,nuits,pers,pdj,total};
+}
+function valider(){
+  f.querySelectorAll('[aria-invalid]').forEach(x=>x.removeAttribute('aria-invalid'));
+  const{r,nuits}=state();let m='';
+  const bad=n=>{el(n).setAttribute('aria-invalid','true');return el(n)};
+  let first=null;
+  if(!r){m='Choisissez une chambre.';first=f.querySelector('[name=chambre]')}
+  else if(!el('arrivee').value){m="Indiquez votre date d'arrivée.";first=bad('arrivee')}
+  else if(parse(el('arrivee').value)<parse(iso(today))){m="La date d'arrivée est déjà passée.";first=bad('arrivee')}
+  else if(!el('depart').value){m='Indiquez votre date de départ.';first=bad('depart')}
+  else if(nuits<1){m="Le départ doit être après l'arrivée.";first=bad('depart')}
+  else if(!el('prenom').value.trim()){m='Indiquez votre prénom.';first=bad('prenom')}
+  err.textContent=m;if(first)first.focus();return!m;
+}
+function texte(){
+  const c=calc();
+  return['Bonjour, je souhaite réserver au Débarcadère de Saint-Louis.','',
+    `Chambre : ${c.r.n}`,`Arrivée : ${fmt(el('arrivee').value)}`,`Départ : ${fmt(el('depart').value)}`,
+    `${c.nuits} nuit${c.nuits>1?'s':''}, ${c.pers} personne${c.pers>1?'s':''}, ${PDJ[c.pdj][1]}`,
+    `Estimation du site : ${eur(c.total)}`,
+    ...(el('message').value.trim()?['',el('message').value.trim()]:[]),
+    '',`${el('prenom').value.trim()}`].join('\n');
+}
+f.addEventListener('change',()=>{syncPers();calc();if(err.textContent)valider()});
+f.addEventListener('input',e=>{if(e.target.type==='date')calc()});
+f.addEventListener('submit',e=>{e.preventDefault();if(!valider())return;window.open(`https://wa.me/${TEL}?text=${encodeURIComponent(texte())}`,'_blank','noopener')});
+document.getElementById('f-mail').addEventListener('click',()=>{if(!valider())return;const c=calc();
+  location.href=`mailto:${MAIL}?subject=${encodeURIComponent(`Demande de réservation : chambre ${c.r.n}`)}&body=${encodeURIComponent(texte())}`});
+document.querySelectorAll('a.resa[data-room]').forEach(a=>a.addEventListener('click',()=>{
+  const r=f.querySelector(`[name=chambre][value=${a.dataset.room}]`);r.checked=true;syncPers();calc();
+  setTimeout(()=>el('arrivee').focus({preventScroll:true}),500)}));
+syncPers();
+})();
 </script>
 </body>
 </html>
