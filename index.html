@@ -181,9 +181,9 @@ section{padding-block:clamp(72px,11vw,144px)}
 .ponton button{all:unset;cursor:zoom-in;display:block;overflow:hidden}
 .ponton button:focus-visible{outline:3px solid var(--tembe-rouge);outline-offset:3px}
 .ponton-main img{width:100%;aspect-ratio:16/9;object-fit:cover}
-.ponton-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1vw,14px)}
-.ponton-grid img{width:100%;aspect-ratio:4/3;object-fit:cover}
-@media (max-width:820px){.ponton .wrap{grid-template-columns:1fr}.ponton-grid{grid-template-columns:1fr 1fr}.ponton-grid button:first-child{grid-column:1/-1}}
+.ponton-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1vw,14px)}
+.ponton-grid img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:820px){.ponton .wrap{grid-template-columns:1fr}.ponton-grid{grid-template-columns:1fr 1fr}}
 
 /* ---- petit-déjeuner ---- */
 .pdj{background:var(--maroni);color:var(--chaux)}
@@ -216,6 +216,7 @@ section{padding-block:clamp(72px,11vw,144px)}
 .grille button{all:unset;cursor:zoom-in;overflow:hidden;display:block;background:var(--chaux-2)}
 .grille button:focus-visible{outline:3px solid var(--tembe-rouge);outline-offset:2px}
 .grille img{width:100%;height:100%;object-fit:cover}
+.grille .g7 img{object-position:50% 40%}
 .grille .g1,.grille .g2{grid-column:span 3;grid-row:span 2}
 .grille .g3,.grille .g4,.grille .g5{grid-column:span 2;grid-row:span 2}
 .grille .g6{grid-column:span 4;grid-row:span 2}.grille .g7{grid-column:span 2;grid-row:span 2}
@@ -390,9 +391,10 @@ footer a{color:var(--chaux)}
       <p>Autour, des palmiers, des tables en pierre à l'ombre d'un grand arbre et une terrasse fleurie.</p>
     </div>
     <div class="ponton-grid">
-      <button type="button" data-set="jardin" data-i="1"><img src="img/jardin-tables-sm.webp" alt="Tables et bancs en pierre sous un grand arbre, face au ponton" loading="lazy"></button>
-      <button type="button" data-set="jardin" data-i="2"><img src="img/jardin-palmiers-sm.webp" alt="Palmiers et plantes tropicales au bord du fleuve" loading="lazy"></button>
-      <button type="button" data-set="jardin" data-i="3"><img src="img/jardin-terrasse-sm.webp" alt="Terrasse fleurie et jardin au lever du jour, face au Maroni" loading="lazy"></button>
+      <button type="button" data-set="jardin" data-i="1"><img src="img/kiosque-couchant-sm.webp" alt="Le kiosque au bout du ponton, au coucher du soleil sur le Maroni" loading="lazy"></button>
+      <button type="button" data-set="jardin" data-i="2"><img src="img/salon-couvert-couchant-sm.webp" alt="Salon couvert avec canapés, face au fleuve au coucher du soleil" loading="lazy"></button>
+      <button type="button" data-set="jardin" data-i="3"><img src="img/jardin-tables-sm.webp" alt="Tables et bancs en pierre sous un grand arbre, face au ponton" loading="lazy"></button>
+      <button type="button" data-set="jardin" data-i="4"><img src="img/jardin-palmiers-sm.webp" alt="Palmiers et plantes tropicales au bord du fleuve" loading="lazy"></button>
     </div>
   </div>
 </section>
@@ -447,9 +449,9 @@ footer a{color:var(--chaux)}
     <button type="button" class="g2" data-set="galerie" data-i="1"><img src="img/maison-terrasse-sm.webp" alt="Entrée d'une chambre sur la terrasse dallée, le fleuve en fond" loading="lazy"></button>
     <button type="button" class="g3" data-set="galerie" data-i="2"><img src="img/tableau-chef-sm.webp" alt="Tableau d'un chef amérindien en coiffe de plumes" loading="lazy"></button>
     <button type="button" class="g4" data-set="galerie" data-i="3"><img src="img/balcon-maroni-sm.webp" alt="Fauteuils sur un balcon en bois face au Maroni" loading="lazy"></button>
-    <button type="button" class="g5" data-set="galerie" data-i="4"><img src="img/tableau-faucon-sm.webp" alt="Tableau d'un faucon" loading="lazy"></button>
+    <button type="button" class="g5" data-set="galerie" data-i="4"><img src="img/bureau-portrait-sm.webp" alt="Bureau avec un portrait dessiné, une lampe et un livre sur Saint-Laurent" loading="lazy"></button>
     <button type="button" class="g6" data-set="galerie" data-i="5"><img src="img/facade-sm.webp" alt="Façade de la maison, bois et pierre" loading="lazy"></button>
-    <button type="button" class="g7" data-set="galerie" data-i="6"><img src="img/allee-fleuve-sm.webp" alt="Allée bordée de palmiers menant au fleuve" loading="lazy"></button>
+    <button type="button" class="g7" data-set="galerie" data-i="6"><img src="img/couchant-maroni-sm.webp" alt="Coucher de soleil orange et rose sur le Maroni" loading="lazy"></button>
   </div>
 </section>
 
