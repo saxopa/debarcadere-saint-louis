@@ -422,7 +422,7 @@ footer a{color:var(--chaux)}
         <h3>Option gourmande <span class="prix">+ 5 €</span></h3>
         <ul>
           <li>Œuf</li>
-          <li>Yaourt maison</li>
+          <li>Plateau de charcuterie</li>
         </ul>
         <p class="total">Formule avec l'option gourmande : <strong>20 € par personne</strong></p>
       </div>
@@ -475,7 +475,7 @@ footer a{color:var(--chaux)}
           <label>Personnes<select name="personnes"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
           <label>Petit-déjeuner<select name="pdj"><option value="non">Sans</option><option value="formule">Formule, 15 €</option><option value="gourmande">Gourmand, 20 €</option></select></label>
         </div>
-        <label>Votre prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+        <label>Nom et prénom<input type="text" name="prenom" autocomplete="name" required></label>
         <label><span>Un mot à ajouter ? <span class="opt">(facultatif)</span></span><textarea name="message" rows="2"></textarea></label>
         <div class="estim" id="estim" aria-live="polite" hidden></div>
         <p class="f-err" id="f-err" role="alert"></p>
@@ -591,7 +591,7 @@ function valider(){
   else if(parse(el('arrivee').value)<parse(iso(today))){m="La date d'arrivée est déjà passée.";first=bad('arrivee')}
   else if(!el('depart').value){m='Indiquez votre date de départ.';first=bad('depart')}
   else if(nuits<1){m="Le départ doit être après l'arrivée.";first=bad('depart')}
-  else if(!el('prenom').value.trim()){m='Indiquez votre prénom.';first=bad('prenom')}
+  else if(!el('prenom').value.trim()){m='Indiquez votre nom et prénom.';first=bad('prenom')}
   err.textContent=m;if(first)first.focus();return!m;
 }
 function texte(){
