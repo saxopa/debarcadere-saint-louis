@@ -168,13 +168,20 @@ section{padding-block:clamp(72px,11vw,144px)}
 .tarifs{margin-top:64px;max-width:860px}
 .tarifs h3{font-size:clamp(1.8rem,3.5vw,2.4rem);margin-bottom:.5em}
 .table-wrap{overflow-x:auto}
-.tarifs table{width:100%;border-collapse:collapse;border-top:2px solid var(--wacapou);min-width:460px}
+.tarifs table{width:100%;border-collapse:collapse;border-top:2px solid var(--wacapou)}
 .tarifs th,.tarifs td{text-align:left;padding:14px 16px 14px 0;border-bottom:1px solid var(--pierre);vertical-align:top}
 .tarifs thead th{font-size:.9rem;font-weight:600;color:var(--wacapou-2)}
 .tarifs tbody th{font-family:var(--slab);font-size:1.3rem;font-weight:600}
 .tarifs tbody th span{display:block;font-family:var(--sans);font-size:.88rem;font-weight:400;color:var(--wacapou-2)}
 .tarifs td{font-family:var(--slab);font-size:1.3rem;font-weight:700;white-space:nowrap}
-.tarifs .note{margin-top:16px;color:var(--wacapou-2);max-width:40em}
+.tarifs-sous{margin:-.3em 0 .9em;color:var(--wacapou-2)}
+.tarifs .note{margin-top:20px;max-width:40em;padding:14px 18px;background:var(--chaux);border-left:4px solid var(--tembe-jaune)}
+.tarifs .note-t{font-family:var(--slab);font-size:1.15rem;font-weight:600}
+.tarifs .note ul{margin:.5em 0 .6em 1.1em}
+.tarifs .note li{padding:.15em 0}
+.tarifs .note-pdj{color:var(--wacapou-2)}
+.tarifs .note-pdj a{color:var(--tembe-rouge);font-weight:600}
+@media (max-width:520px){.tarifs th,.tarifs td{padding-right:10px}.tarifs tbody th,.tarifs td{font-size:1.15rem}.tarifs thead th{font-size:.82rem}}
 .equip{margin-top:48px;display:flex;flex-wrap:wrap;gap:10px}
 .equip li.fort{background:var(--wacapou);color:var(--chaux);border-color:var(--wacapou);font-weight:600}
 .equip li{list-style:none;padding:.4em .85em;border:1px solid var(--pierre);font-size:.95rem;background:var(--chaux)}
@@ -352,17 +359,17 @@ footer a{color:var(--chaux)}
       <article class="porte">
         <img src="img/tembe-lit-sm.webp" alt="" width="600" height="800" loading="lazy">
         <button type="button" data-set="tembe" aria-label="Voir les photos de la chambre Tembé"></button>
-        <div class="txt"><p class="niveau">Rez-de-chaussée, accessible PMR</p><h3>Tembé</h3><p>Une grande peinture tembé au-dessus du lit, un fauteuil sculpté et un mur de pierre d'origine côté cuisine.</p><p class="prix-ch"><strong>130 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="tembe">Réserver cette chambre</a></div></div>
+        <div class="txt"><p class="niveau">Rez-de-chaussée, accessible PMR</p><h3>Tembé</h3><p>Une grande peinture tembé au-dessus du lit, un fauteuil sculpté et un mur de pierre d'origine côté cuisine.</p><p class="prix-ch"><strong>130&nbsp;€</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="tembe">Réserver cette chambre</a></div></div>
       </article>
       <article class="porte">
         <img src="img/creole-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
         <button type="button" data-set="creole" aria-label="Voir les photos de la chambre Créole"></button>
-        <div class="txt"><p class="niveau">À l'étage, jusqu'à 4 personnes</p><h3>Créole</h3><p>Lumineuse et spacieuse, avec un salon, une grande table en bois et un balcon meublé.</p><p class="prix-ch"><strong>150 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="creole">Réserver cette chambre</a></div></div>
+        <div class="txt"><p class="niveau">À l'étage, jusqu'à 4 personnes</p><h3>Créole</h3><p>La plus grande des trois, lumineuse et spacieuse, avec un salon, une grande table en bois et un balcon meublé.</p><p class="prix-ch"><strong>150&nbsp;€</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="creole">Réserver cette chambre</a></div></div>
       </article>
       <article class="porte">
         <img src="img/ciel-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
         <button type="button" data-set="ciel" aria-label="Voir les photos de la chambre Ciel de Case"></button>
-        <div class="txt"><p class="niveau">En duplex</p><h3>Ciel de Case</h3><p>Mur de pierre, douche à l'italienne et le balcon le plus ouvert sur le fleuve.</p><p class="prix-ch"><strong>130 €</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="ciel">Réserver cette chambre</a></div></div>
+        <div class="txt"><p class="niveau">En duplex</p><h3>Ciel de Case</h3><p>Mur de pierre, douche à l'italienne et le balcon le plus ouvert sur le fleuve.</p><p class="prix-ch"><strong>130&nbsp;€</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="ciel">Réserver cette chambre</a></div></div>
       </article>
     </div>
     <ul class="equip" aria-label="Équipements des chambres">
@@ -370,18 +377,27 @@ footer a{color:var(--chaux)}
     </ul>
     <div class="tarifs" id="tarifs">
       <h3>Tarifs</h3>
+      <p class="tarifs-sous">Prix par nuit pour 2 personnes.</p>
       <div class="table-wrap">
       <table>
         <caption class="sr">Tarifs par nuit, pour deux personnes</caption>
-        <thead><tr><th scope="col">Chambre</th><th scope="col">La nuit, 2 personnes</th><th scope="col">À partir de 3 nuits</th></tr></thead>
+        <thead><tr><th scope="col">Chambre</th><th scope="col">La nuit</th><th scope="col">Dès 3&nbsp;nuits</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Tembé <span>rez-de-chaussée, accessible PMR</span></th><td>130 €</td><td>120 €</td></tr>
-          <tr><th scope="row">Créole <span>à l'étage, jusqu'à 4 personnes</span></th><td>150 €</td><td>130 €</td></tr>
-          <tr><th scope="row">Ciel de Case <span>en duplex</span></th><td>130 €</td><td>120 €</td></tr>
+          <tr><th scope="row">Tembé <span>rez-de-chaussée, accessible PMR</span></th><td>130&nbsp;€</td><td>120&nbsp;€</td></tr>
+          <tr><th scope="row">Créole <span>la plus grande, à l'étage, jusqu'à 4&nbsp;personnes</span></th><td>150&nbsp;€</td><td>130&nbsp;€</td></tr>
+          <tr><th scope="row">Ciel de Case <span>en duplex</span></th><td>130&nbsp;€</td><td>120&nbsp;€</td></tr>
         </tbody>
       </table>
       </div>
-      <p class="note">Chambre Créole : jusqu'à 4 personnes, 2 dans le lit double et 2 dans le canapé-lit. 50 € par personne supplémentaire. Petit-déjeuner en option, voir ci-dessous.</p>
+      <div class="note">
+        <p class="note-t">Chambre Créole, la plus grande&nbsp;: jusqu&apos;à 4&nbsp;personnes</p>
+        <ul>
+          <li>1 lit deux places</li>
+          <li>1 canapé-lit (2 places)</li>
+          <li>50&nbsp;€ par personne supplémentaire et par nuit</li>
+        </ul>
+        <p class="note-pdj">Petit&#8209;déjeuner en option, <a href="#petit-dejeuner">voir la carte</a>.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -415,7 +431,7 @@ footer a{color:var(--chaux)}
     </div>
     <div class="formules">
       <div class="formule">
-        <h3>La formule <span class="prix">15 € <small>par personne</small></span></h3>
+        <h3>La formule <span class="prix">15&nbsp;€ <small>par personne</small></span></h3>
         <ul>
           <li>Café, thé ou chocolat créole</li>
           <li>Jus de fruits frais</li>
@@ -425,11 +441,11 @@ footer a{color:var(--chaux)}
         </ul>
       </div>
       <div class="formule">
-        <h3>Option gourmande <span class="prix">+ 5 €</span></h3>
+        <h3>Option gourmande <span class="prix">+ 5&nbsp;€</span></h3>
         <ul>
           <li>Œuf <em>ou</em> plateau de charcuterie, au choix</li>
         </ul>
-        <p class="total">Formule avec l'option gourmande : <strong>20 € par personne</strong></p>
+        <p class="total">Formule avec l'option gourmande : <strong>20&nbsp;€ par personne</strong></p>
       </div>
     </div>
   </div>
@@ -469,9 +485,9 @@ footer a{color:var(--chaux)}
       <form id="resa" class="resa-form" novalidate>
         <fieldset class="f-chambres">
           <legend>Chambre</legend>
-          <label><input type="radio" name="chambre" value="tembe"><span><b>Tembé</b>2 personnes, 130 €</span></label>
-          <label><input type="radio" name="chambre" value="creole"><span><b>Créole</b>4 personnes, 150 €</span></label>
-          <label><input type="radio" name="chambre" value="ciel"><span><b>Ciel de Case</b>2 personnes, 130 €</span></label>
+          <label><input type="radio" name="chambre" value="tembe"><span><b>Tembé</b>2 personnes, 130&nbsp;€</span></label>
+          <label><input type="radio" name="chambre" value="creole"><span><b>Créole</b>4 personnes, 150&nbsp;€</span></label>
+          <label><input type="radio" name="chambre" value="ciel"><span><b>Ciel de Case</b>2 personnes, 130&nbsp;€</span></label>
         </fieldset>
         <div class="f-row">
           <label>Arrivée<input type="date" name="arrivee" required></label>
@@ -479,7 +495,7 @@ footer a{color:var(--chaux)}
         </div>
         <div class="f-row">
           <label>Personnes<select name="personnes"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
-          <label>Petit-déjeuner<select name="pdj"><option value="non">Sans</option><option value="formule">Formule, 15 €</option><option value="gourmande">Gourmand, 20 €</option></select></label>
+          <label>Petit-déjeuner<select name="pdj"><option value="non">Sans</option><option value="formule">Formule, 15&nbsp;€</option><option value="gourmande">Gourmand, 20&nbsp;€</option></select></label>
         </div>
         <div class="f-row">
           <label>Nom et prénom<input type="text" name="prenom" autocomplete="name" required></label>
