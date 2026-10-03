@@ -239,6 +239,9 @@ section{padding-block:clamp(72px,11vw,144px)}
 .lightbox figure{display:flex;flex-direction:column;align-items:center;max-height:100%;max-width:100%}
 .lightbox figcaption{color:#fff;font-size:.95rem;margin-top:10px;text-align:center}
 .lightbox figure img{max-height:calc(100vh - 150px)}
+.lightbox .lb-share{top:10px;left:10px;font:inherit;font-size:.92rem;font-weight:600;padding:.55em .9em;background:var(--chaux);color:var(--wacapou)}
+.lightbox .lb-share[hidden]{display:none}
+.lb-msg{position:absolute;top:58px;left:10px;margin:0;color:var(--tembe-jaune);font-weight:600;font-size:.92rem}
 .lb-close{top:6px;right:6px}.lb-prev{left:0;top:50%;transform:translateY(-50%)}.lb-next{right:0;top:50%;transform:translateY(-50%)}
 
 /* ---- contact ---- */
@@ -362,17 +365,17 @@ footer a{color:var(--chaux)}
       <p>Chaque chambre est un petit appartement : un lit double, un séjour avec coin repas, une kitchenette et un balcon face au fleuve.</p>
     </div>
     <div class="portes">
-      <article class="porte">
+      <article class="porte" id="chambre-tembe">
         <img src="img/tembe-lit-sm.webp" alt="" width="600" height="800" loading="lazy">
         <button type="button" data-set="tembe" aria-label="Voir les photos de la chambre Tembé"></button>
         <div class="txt"><p class="niveau">Rez-de-chaussée, accessible PMR</p><h3>Tembé</h3><p>Une grande peinture tembé au-dessus du lit, un fauteuil sculpté et un mur de pierre d'origine côté cuisine.</p><p class="prix-ch"><strong>130&nbsp;€</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="tembe">Réserver cette chambre</a></div></div>
       </article>
-      <article class="porte">
+      <article class="porte" id="chambre-creole">
         <img src="img/creole-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
         <button type="button" data-set="creole" aria-label="Voir les photos de la chambre Créole"></button>
         <div class="txt"><p class="niveau">À l'étage, jusqu'à 4 personnes</p><h3>Créole</h3><p>La plus grande des trois, lumineuse et spacieuse, avec un salon, une grande table en bois et un balcon meublé.</p><p class="prix-ch"><strong>150&nbsp;€</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="creole">Réserver cette chambre</a></div></div>
       </article>
-      <article class="porte">
+      <article class="porte" id="chambre-ciel-de-case">
         <img src="img/ciel-lit-sm.webp" alt="" width="600" height="1066" loading="lazy">
         <button type="button" data-set="ciel" aria-label="Voir les photos de la chambre Ciel de Case"></button>
         <div class="txt"><p class="niveau">En duplex</p><h3>Ciel de Case</h3><p>Mur de pierre, douche à l'italienne et le balcon le plus ouvert sur le fleuve.</p><p class="prix-ch"><strong>130&nbsp;€</strong> la nuit pour 2</p><div class="liens"><span class="voir">Voir les 5 photos</span><a class="resa" href="#contact" data-room="ciel">Réserver cette chambre</a></div></div>
@@ -559,6 +562,8 @@ footer a{color:var(--chaux)}
 
 <div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Photo agrandie">
   <button class="lb-close" aria-label="Fermer">×</button>
+  <button class="lb-share" type="button" hidden>Copier le lien de la chambre</button>
+  <p class="lb-msg" aria-live="polite"></p>
   <button class="lb-prev" aria-label="Photo précédente">‹</button>
   <figure><img alt=""><figcaption></figcaption></figure>
   <button class="lb-next" aria-label="Photo suivante">›</button>
@@ -584,7 +589,18 @@ sets.jardin=fromDom('jardin');sets.galerie=fromDom('galerie');
 const lb=document.getElementById('lb'),lbImg=lb.querySelector('img'),lbCap=lb.querySelector('figcaption');let cur=[],i=0,opener=null;
 const show=n=>{i=(n+cur.length)%cur.length;const[f,alt]=cur[i];lbImg.src='img/'+f+'.webp';lbImg.alt=alt;lbCap.textContent=alt+'  ·  '+(i+1)+' / '+cur.length};
 document.querySelectorAll('[data-set]').forEach(b=>b.addEventListener('click',()=>{opener=b;cur=sets[b.dataset.set];show(+(b.dataset.i||0));lb.classList.add('open');lb.querySelector('.lb-close').focus()}));
-const close=()=>{lb.classList.remove('open');opener&&opener.focus()};
+const ROOMID={tembe:'chambre-tembe',creole:'chambre-creole',ciel:'chambre-ciel-de-case'};
+const share=lb.querySelector('.lb-share'),lbMsg=lb.querySelector('.lb-msg');let curRoom=null;
+const roomUrl=()=>location.origin+location.pathname+'#'+ROOMID[curRoom];
+share.addEventListener('click',async()=>{const url=roomUrl(),n=document.querySelector('#'+ROOMID[curRoom]+' h3').textContent;
+  if(navigator.share&&matchMedia('(pointer:coarse)').matches){try{await navigator.share({title:`Chambre ${n} — Le Débarcadère de Saint-Louis`,url});return}catch(e){if(e.name==='AbortError')return}}
+  try{await navigator.clipboard.writeText(url);lbMsg.textContent='Lien copié'}catch(e){lbMsg.textContent=url}});
+document.querySelectorAll('.porte [data-set]').forEach(b=>b.addEventListener('click',()=>{curRoom=b.dataset.set;share.hidden=false;lbMsg.textContent='';history.replaceState(null,'','#'+ROOMID[curRoom])}));
+document.querySelectorAll('[data-set]:not(.porte [data-set])').forEach(b=>b.addEventListener('click',()=>{curRoom=null;share.hidden=true;lbMsg.textContent=''}));
+const close=()=>{lb.classList.remove('open');if(curRoom&&location.hash==='#'+ROOMID[curRoom])history.replaceState(null,'',location.pathname+location.search);curRoom=null;opener&&opener.focus()};
+const fromHash=()=>{const k=Object.keys(ROOMID).find(k=>'#'+ROOMID[k]===location.hash);if(!k)return;
+  const art=document.getElementById(ROOMID[k]);art.scrollIntoView({block:'center'});setTimeout(()=>art.querySelector('[data-set]').click(),400)};
+addEventListener('hashchange',fromHash);fromHash();
 lb.querySelector('.lb-close').onclick=close;lb.querySelector('.lb-prev').onclick=()=>show(i-1);lb.querySelector('.lb-next').onclick=()=>show(i+1);
 lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='FIGURE')close()});
 addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});
