@@ -275,6 +275,11 @@ section{padding-block:clamp(72px,11vw,144px)}
 .f-err:empty{display:none}
 .f-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
 .f-actions .btn{font-size:1.05rem;cursor:pointer}
+.mail-box{border:1px solid rgba(238,240,234,.3);padding:14px 16px;font-size:.95rem}
+.mb-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.mb-btns a,.mb-btns button{font:inherit;font-weight:600;font-size:.92rem;color:var(--wacapou);background:var(--chaux);border:0;padding:.55em .9em;text-decoration:none;cursor:pointer}
+.mb-msg{margin-top:8px;color:var(--tembe-jaune);font-weight:600}
+.mb-msg:empty{display:none}
 .f-mail{background:none;border:0;color:#fff;font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:.2em;cursor:pointer;padding:.5em 0}
 @media (max-width:560px){.f-chambres{grid-template-columns:1fr}.f-row{grid-template-columns:1fr}}
 .contact .big{display:inline-block;font-family:var(--slab);font-weight:700;font-size:clamp(2rem,5vw,3.4rem);line-height:1;letter-spacing:-.02em;color:#fff;text-decoration:none;margin:.25em 0 .35em;border-bottom:4px solid var(--tembe-rouge)}
@@ -512,6 +517,15 @@ footer a{color:var(--chaux)}
           <button type="submit" class="btn btn-rouge"><svg aria-hidden="true"><use href="#i-wa"/></svg>Envoyer sur WhatsApp</button>
           <button type="button" class="f-mail" id="f-mail">Envoyer par e-mail</button>
         </div>
+        <div class="mail-box" id="mail-box" hidden>
+          <p>Choisissez comment envoyer votre demande à <strong>debarcadere@saintlouis97320.com</strong>&nbsp;:</p>
+          <div class="mb-btns">
+            <a class="mb-gmail" href="#" target="_blank" rel="noopener">Ouvrir dans Gmail</a>
+            <a class="mb-app" href="#">Ouvrir ma messagerie</a>
+            <button type="button" class="mb-copy">Copier le message</button>
+          </div>
+          <p class="mb-msg" aria-live="polite"></p>
+        </div>
       </form>
       <p class="autres">Vous pouvez aussi appeler le <a class="tel-inline" href="tel:+594694411036">06 94 41 10 36</a> ou écrire à <a class="mail" href="mailto:debarcadere@saintlouis97320.com?subject=Demande%20de%20r%C3%A9servation">debarcadere@saintlouis97320.com</a>.</p>
     </div>
@@ -637,7 +651,14 @@ f.addEventListener('change',()=>{syncPers();calc();if(err.textContent)valider()}
 f.addEventListener('input',e=>{if(e.target.type==='date')calc()});
 f.addEventListener('submit',e=>{e.preventDefault();if(!valider())return;window.open(`https://wa.me/${TEL}?text=${encodeURIComponent(texte())}`,'_blank','noopener')});
 document.getElementById('f-mail').addEventListener('click',()=>{if(!valider())return;const c=calc();
-  location.href=`mailto:${MAIL}?subject=${encodeURIComponent(`Demande de réservation : chambre ${c.r.n}`)}&body=${encodeURIComponent(texte())}`});
+  const su=encodeURIComponent(`Demande de réservation : chambre ${c.r.n}`),bo=encodeURIComponent(texte());
+  const box=document.getElementById('mail-box');
+  box.querySelector('.mb-gmail').href=`https://mail.google.com/mail/?view=cm&fs=1&to=${MAIL}&su=${su}&body=${bo}`;
+  box.querySelector('.mb-app').href=`mailto:${MAIL}?subject=${su}&body=${bo}`;
+  box.hidden=false;box.querySelector('.mb-msg').textContent='';box.scrollIntoView({block:'nearest',behavior:'smooth'})});
+document.querySelector('#mail-box .mb-copy').addEventListener('click',async()=>{const t=texte(),m=document.querySelector('#mail-box .mb-msg');
+  try{await navigator.clipboard.writeText(t);m.textContent=`Message copié. Collez-le dans un e-mail à ${MAIL}.`}
+  catch(e){m.textContent=`Copie impossible : écrivez-nous à ${MAIL}.`}});
 document.querySelectorAll('a.resa[data-room]').forEach(a=>a.addEventListener('click',()=>{
   const r=f.querySelector(`[name=chambre][value=${a.dataset.room}]`);r.checked=true;syncPers();calc();
   setTimeout(()=>el('arrivee').focus({preventScroll:true}),500)}));
