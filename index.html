@@ -646,7 +646,9 @@ function calc(){
   if(supp)h+=`<li><span>${pers-2} personne${pers>3?'s':''} en plus × ${SUPP} € × ${nuits} nuit${nuits>1?'s':''}</span><span>${eur(supp)}</span></li>`;
   if(pd)h+=`<li><span>Petit-déjeuner : ${pers} × ${PDJ[pdj][0]} € × ${nuits} matin${nuits>1?'s':''}</span><span>${eur(pd)}</span></li>`;
   h+=`<li class="tot"><span>Estimation</span><span>${eur(total)}</span></li></ul><small>${nuits>=3?'Tarif à partir de 3 nuits appliqué. ':''}Prix indicatif : nous vous confirmons la disponibilité et le montant exact.</small>`;
-  est.innerHTML=h;est.hidden=false;return{r,nuits,pers,pdj,total};
+  est.innerHTML=h;est.hidden=false;
+  const detail=[...est.querySelectorAll('li:not(.tot)')].map(li=>'- '+[...li.children].map(x=>x.textContent).join(' = '));
+  return{r,nuits,pers,pdj,total,detail};
 }
 function valider(){
   f.querySelectorAll('[aria-invalid]').forEach(x=>x.removeAttribute('aria-invalid'));
@@ -667,7 +669,7 @@ function texte(){
   return['Bonjour, je souhaite réserver au Débarcadère de Saint-Louis.','',
     `Chambre : ${c.r.n}`,`Arrivée : ${fmt(el('arrivee').value)}`,`Départ : ${fmt(el('depart').value)}`,
     `${c.nuits} nuit${c.nuits>1?'s':''}, ${c.pers} personne${c.pers>1?'s':''}, ${PDJ[c.pdj][1]}`,
-    `Estimation du site : ${eur(c.total)}`,
+    '','Estimation du site :',...c.detail,`Total : ${eur(c.total)}`,
     ...(el('message').value.trim()?['',el('message').value.trim()]:[]),
     '',`${el('prenom').value.trim()}`,`E-mail : ${el('email').value.trim()}`].join('\n');
 }
